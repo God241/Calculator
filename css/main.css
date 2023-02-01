@@ -63,9 +63,12 @@ td:hover {
 	body {
 		overflow: hidden;
 		padding: 0;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.table {
 		border-spacing: 0.5em;
+		flex-grow: 1;
 	}
 }
