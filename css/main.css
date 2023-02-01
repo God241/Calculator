@@ -64,4 +64,8 @@ td:hover {
 		overflow: hidden;
 		padding: 0;
 	}
+
+	.table {
+		border-spacing: 0.5em;
+	}
 }
