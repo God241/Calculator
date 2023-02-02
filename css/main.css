@@ -101,4 +101,14 @@ td:hover {
 	.h1-title {
 		font-size: 36px;
 	}
+
+	.link {
+		color: #fff;
+		font-size: 24px;
+		text-align: center;
+	}
+
+	.link:hover {
+		color: #20C20E;
+	}
 }
