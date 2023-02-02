@@ -66,22 +66,6 @@ td:hover {
 	padding: 0 10px;
 }
 
-.footer {
-	display: flex;
-	padding: 20px 0;
-	justify-content: center;
-}
-
-.link {
-	color: #fff;
-	font-size: 24px;
-	text-align: center;
-}
-
-.link:hover {
-	color: #20C20E;
-}
-
 @media (min-width: 768px) {
 	.table {
 		margin: 0 auto;
@@ -100,15 +84,5 @@ td:hover {
 
 	.h1-title {
 		font-size: 36px;
-	}
-
-	.link {
-		color: #fff;
-		font-size: 24px;
-		text-align: center;
-	}
-
-	.link:hover {
-		color: #20C20E;
 	}
 }
