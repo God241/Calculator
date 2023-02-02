@@ -21,6 +21,7 @@ document.getElementById('ac').addEventListener('click', reset);
 document.getElementById('del').addEventListener('click', del);
 
 const display = document.getElementById('display-text');
+display.innerText = '0';
 let displayCurrent = '';
 
 function input(e) {
@@ -143,6 +144,12 @@ function calculate() {
 		let result = '';
 		let operator = str[str.length - 2];
 		let valueProcent = str[str.length - 1];
+
+		if (valueProcent == '-' || valueProcent == '+' || valueProcent == '%' || valueProcent == '*' || valueProcent == '/' || valueProcent == '.') {
+			displayCurrent = '';
+			display.innerText = 'Неправильный формат!';
+		}
+
 		let leftExpression = [];
 
 		for (let i = 0; i < str.length - 2; i++) {
@@ -192,6 +199,7 @@ function calculate() {
 function reset() {
 	displayCurrent = '';
 	display.innerText = numberWithCommas(displayCurrent);
+	display.innerText = '0';
 }
 
 function del() {
