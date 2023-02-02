@@ -124,47 +124,47 @@ function calculate() {
 	}
 
 	if (displayCurrent.includes('%')) {
-		let expProcentOfNumber = displayCurrent.match(/\%\d+(\.\d+)\%|\%\d+/g);
+		let exp = displayCurrent.match(/\d+(\.\d+)|\d+|(\%|\+|\-|\*|\/)/g);
+		let str = [];
 
-		if (String(expProcentOfNumber).includes('%')) {
-			let exp = displayCurrent.match(/\d+(\.\d+)|\d+|(\%|\+|\-|\*|\/)/g);
-
-			for (let key in exp) {
-				if (exp[key] == '%') {
-					exp[key] = '/100*';
-					displayCurrent = exp.join('');
-					break;
-				}
+		for (let key in exp) {
+			if (exp[key] == '%') {
+				break;
+			} else {
+				str.push(exp[key]);
 			}
+		}
+
+		if (str.length < 2) {
+			displayCurrent = '';
+			display.innerText = 'Неправильный формат!';
+		}
+
+		let result = '';
+		let operator = str[str.length - 2];
+		let valueProcent = str[str.length - 1];
+		let leftExpression = [];
+
+		for (let i = 0; i < str.length - 2; i++) {
+			leftExpression.push(str[i]);
+		}
+
+		leftExpression = leftExpression.join('');
+		leftExpression = eval(leftExpression);
+
+		if (operator == '*') {
+			valueProcent = str[str.length - 1] / 100;
+			result += leftExpression;
+			result += operator;
+			result += valueProcent;
+			result = eval(result);
+
+			exp.splice(0, str.length + 1);
+			exp.unshift(result);
+
+			displayCurrent = exp.join('');
 		} else {
-			let exp = displayCurrent.match(/\d+(\.\d+)|\d+|(\%|\+|\-|\*|\/)/g);
-			let str = [];
-
-			for (let key in exp) {
-				if (exp[key] == '%') {
-					break;
-				} else {
-					str.push(exp[key]);
-				}
-			}
-
-			if (str.length < 2) {
-				displayCurrent = '';
-				display.innerText = 'Неправильный формат!';
-			}
-
-			let result = '';
-			let operator = str[str.length - 2];
-			let valueProcent = str[str.length - 1];
-			let leftExpression = [];
-
-			for (let i = 0; i < str.length - 2; i++) {
-				leftExpression.push(str[i]);
-			}
-
-			leftExpression = leftExpression.join('');
-			leftExpression = eval(leftExpression);
-			valueProcent = leftExpression / 100 * str[str.length - 1]
+			valueProcent = leftExpression / 100 * str[str.length - 1];
 
 			result += leftExpression;
 			result += operator;
