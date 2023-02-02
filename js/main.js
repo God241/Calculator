@@ -186,13 +186,15 @@ function calculate() {
 	}
 
 	//Проверка на деление на ноль и NaN
-	let checkResult = eval(displayCurrent);
+	let checkResult = eval(displayCurrent).toFixed(2);
+
 	if (checkResult == Infinity || checkResult == -Infinity || Number.isNaN(checkResult)) {
 		displayCurrent = '';
 		display.innerText = 'Не делите на 0!';
 	} else { //если всё норм то выводим результат
-		display.innerText = numberWithCommas(eval(displayCurrent).toFixed(2));
-		displayCurrent = numberWithCommas(eval(displayCurrent).toFixed(2));
+		displayCurrent = '';
+		display.innerText = numberWithCommas(checkResult);
+		displayCurrent = checkResult;
 	}
 }
 
